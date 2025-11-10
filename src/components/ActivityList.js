@@ -26,17 +26,30 @@ function ActivityList() {
     fetchActivities();
   }, []);
 
+  const getStatusColor = (status) => {
+    switch (status) {
+      case "planned": return "#fcd34d"; // yellow
+      case "in_progress": return "#3b82f6"; // blue
+      case "completed": return "#16a34a"; // green
+      default: return "#e5e7eb"; // gray
+    }
+  };
+
   return (
     <div>
       <h2>Activities</h2>
-      <ul>
+      <div className="activities-grid">
         {activities.map((a) => (
-          <li key={a.id}>
-            {a.title} ({a.activity_type}) - {a.status} - {a.date}
+          <div key={a.id} className="activity-card" style={{ borderLeft: `5px solid ${getStatusColor(a.status)}` }}>
+            <h3>{a.title}</h3>
+            <p>Type: {a.activity_type}</p>
+            <p>Status: {a.status}</p>
+            <p>Date: {a.date}</p>
+            <p>{a.description}</p>
             <button onClick={() => handleDelete(a.id)}>Delete</button>
-          </li>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }

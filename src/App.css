@@ -1,38 +1,171 @@
-.App {
+/* ===== General Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: #f0f4f8;
+  color: #333;
+}
+
+/* ===== Container ===== */
+.container {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+/* ===== Headings ===== */
+h1, h2 {
   text-align: center;
+  margin-bottom: 20px;
+  color: #1e3a8a;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* ===== Navbar ===== */
+.navbar {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.navbar span {
+  font-weight: bold;
+  color: #1e3a8a;
+}
+
+.navbar button {
+  padding: 8px 15px;
+  border-radius: 8px;
+  border: none;
+  background-color: #1e3a8a;
   color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-.App-link {
-  color: #61dafb;
+.navbar button:hover {
+  background-color: #2563eb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* ===== Forms ===== */
+form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+input, select {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+input:focus, select:focus {
+  border-color: #1e3a8a;
+  outline: none;
+}
+
+button[type="submit"] {
+  grid-column: 1 / -1;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #1e3a8a;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button[type="submit"]:hover {
+  background-color: #2563eb;
+}
+
+/* ===== Activity Grid ===== */
+.activities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+/* ===== Activity Card ===== */
+.activity-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+  border-left: 5px solid #e5e7eb; /* default gray */
+}
+
+.activity-card:hover {
+  transform: translateY(-5px);
+}
+
+.activity-card h3 {
+  margin-bottom: 10px;
+  color: #1e3a8a;
+}
+
+.activity-card p {
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+/* Status Color-coded Borders & Badges */
+.status-badge {
+  padding: 4px 8px;
+  border-radius: 6px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.status-planned { background: #f59e0b; }       /* yellow */
+.status-in_progress { background: #3b82f6; }   /* blue */
+.status-completed { background: #16a34a; }     /* green */
+
+.activity-card button {
+  margin-top: 10px;
+  background-color: #dc2626;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.activity-card button:hover {
+  background-color: #ef4444;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 600px) {
+  .container {
+    padding: 15px;
+    margin: 20px auto;
   }
-  to {
-    transform: rotate(360deg);
+
+  form {
+    gap: 10px;
+  }
+
+  input, select, button {
+    font-size: 14px;
+    padding: 10px;
   }
 }
